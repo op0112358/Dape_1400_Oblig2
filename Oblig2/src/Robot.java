@@ -28,7 +28,7 @@ public class Robot {
             System.out.println("FEILMELDING" + "\n" + "Det regner. Robotten kan ikke brukes.");
             return false;
         }
-        if (!World.isSunday()){
+        if (!world.isSunday()){
             System.out.println("FEILMELDING" + "\n" + "Det er ikke søndag. Robotten Kan bare gå til parken på søndager.");
             return false;
         }
@@ -61,8 +61,8 @@ public class Robot {
 
     public void setDistanceToPark(Park park){
         double[] parkPosition = park.getPosition();
-        int y = 1;
         int x = 0;
+        int y = 1;
         this.distancetoPark = (int) Math.sqrt(Math.pow(parkPosition[x] - this.position[x],2) + Math.pow(parkPosition[y] - this.position[y],2));
         System.out.println("Distanse til park: " + this.distancetoPark);
     }
@@ -80,5 +80,11 @@ public class Robot {
                     "Nytt batterinivå: " + this.batteryLevel + "%" + "\n"
             );
         }
+    }
+    public String getName(){
+        return this.name;
+    }
+    public void setName(String name){
+        this.name = name;
     }
 }
