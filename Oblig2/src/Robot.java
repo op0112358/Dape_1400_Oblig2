@@ -6,8 +6,6 @@ public class Robot {
     private float batteryLevel;
     private int distancetoPark;
     private double[] position;
-    private int X = 0;
-    private int Y = 1;
 
     public Robot (String name, String botType, float batteryLevel, int distancetoPark, double positionX,double positionY){
         this.name = name;
@@ -54,17 +52,23 @@ public class Robot {
             System.out.println("FEILMELDING" + "\n" + "Det kan ikke være mandag. Danseklubben er stengt.");
             return false;
         }
+        if (world.getIsRaining()) {
+            System.out.println("FEILMELDING" + "\n" + "Det regner. Robotten kan ikke gå til danseklubben.");
+            return false;
+        }
         return true;
     }
 
-    public void setDistancetoPark(Park park){
+    public void setDistanceToPark(Park park){
         double[] parkPosition = park.getPosition();
-        this.distancetoPark = (int) Math.sqrt(Math.pow(parkPosition[X] - this.position[X],2) + Math.pow(parkPosition[Y] - this.position[Y],2));
+        int y = 1;
+        int x = 0;
+        this.distancetoPark = (int) Math.sqrt(Math.pow(parkPosition[x] - this.position[x],2) + Math.pow(parkPosition[y] - this.position[y],2));
         System.out.println("Distanse til park: " + this.distancetoPark);
     }
 
     public void WalkToPark(World world, Park park){
-        setDistancetoPark(park);
+        setDistanceToPark(park);
         if (canWalkToThePark(world)){
             System.out.println("Går til park nå.");
             this.position = park.getPosition();
