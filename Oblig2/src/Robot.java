@@ -20,7 +20,8 @@ public class Robot {
         + "Navn: " + this.name + "\n"
         + "Bot type: " + this.botType + "\n"
         + "Batteri kapasitet: " + this.batteryLevel + "%" + "\n"
-        + "Distanse fra park: " + this.distancetoPark + " Meter" + "\n";}
+        + "Distanse fra park: " + this.distancetoPark + " Meter" + "\n";
+    }
 
     public boolean canWalkToThePark(World world) {
         System.out.println(name + " sjekker om det er mulig å gå til parken...");
@@ -48,7 +49,7 @@ public class Robot {
             System.out.println("FEILMELDING" + "\n" + "Det er ikke nok batterinivå, 50%+. Robotten kan ikke være med på danseklubben.");
             return false;
         }
-        if (world.getDay()%7 != 1){
+        if (world.getDay()%7 == 1){
             System.out.println("FEILMELDING" + "\n" + "Det kan ikke være mandag. Danseklubben er stengt.");
             return false;
         }
@@ -81,9 +82,11 @@ public class Robot {
             );
         }
     }
+
     public String getName(){
         return this.name;
     }
+
     public void setName(String name){
         this.name = name;
     }
